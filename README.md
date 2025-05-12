@@ -83,6 +83,7 @@ DOCKER_PASSWORD
 Manual testing via UI and API endpoints. Automated testing can be integrated with Jest (frontend) and Mocha/Chai (backend).
 
 ## 👤 Author
+**Details:**
 Azghan Ahmad
 Bachelor of Software Engineering – FAST NUCES
 Email: azghanduplicate786@gmail.com
