@@ -1,0 +1,72 @@
+/* Add Bus Form Styles */
+.add-bus {
+    padding: 40px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.bus-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bus-form input,
+.bus-form select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.bus-form input:focus,
+.bus-form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #565a5e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #00bcd4;
+    transform: scale(1.05);
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+    .add-bus {
+        padding: 20px;
+        max-width: 95%;
+    }
+
+    .form-title {
+        font-size: 1.4rem;
+    }
+
+    .bus-form input,
+    .bus-form select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}

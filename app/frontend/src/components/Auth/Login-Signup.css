@@ -1,0 +1,129 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #E3F2FD;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  box-sizing: border-box;
+}
+.home-container {
+  height: auto; /* Ensures full viewport height */
+  width: 95vw; /* Ensures full viewport width */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+/* Auth Container */
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto; /* Center vertically with a top margin */
+  background: #FFFFFF;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Auth Title */
+.auth-title {
+  color: #333;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Form Group */
+.form-group {
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #000000;
+}
+/* Radio Button Group Styles */
+.form-group > div {
+  display: flex;
+  gap: 10px; /* Space between the radio buttons */
+  align-items: center; /* Align labels and buttons vertically */
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between the radio button and label */
+  font-size: 0.9rem; /* Ensure the text is legible */
+}
+
+input[type="radio"] {
+  margin: 0; /* Remove default margin for better alignment */
+  accent-color: #000000; /* Optional: Customize the radio button color */
+}
+
+/* Error Message */
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+/* Button */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: #565a5e;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .auth-container {
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .auth-title {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
