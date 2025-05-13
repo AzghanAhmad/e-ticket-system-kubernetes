@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.602b6765.css",
+    "main.js": "/static/js/main.d9c1a59a.js",
+    "static/media/bus.jpg": "/static/media/bus.740e79e444e9f8d1a0b2.jpg",
+    "static/media/Peshawer.jpg": "/static/media/Peshawer.ca76fe5fa9e1ed6ff197.jpg",
+    "static/media/lahore.jpg": "/static/media/lahore.7f57e37cd4292dcd5e65.jpg",
+    "static/media/Karachi.jpeg": "/static/media/Karachi.558bc6b7e169e51d69e7.jpeg",
+    "static/media/murree.jpg": "/static/media/murree.2289fde484d8fb00bb39.jpg",
+    "static/media/islamabad.jpg": "/static/media/islamabad.b7cb90144d154c39b75d.jpg",
+    "static/media/Abbotabad.jpeg": "/static/media/Abbotabad.3c0c9ece249a401511ca.jpeg",
+    "static/media/newlogo.png": "/static/media/newlogo.ef0be4d74f665434b75e.png",
+    "index.html": "/index.html",
+    "main.602b6765.css.map": "/static/css/main.602b6765.css.map",
+    "main.d9c1a59a.js.map": "/static/js/main.d9c1a59a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.602b6765.css",
+    "static/js/main.d9c1a59a.js"
+  ]
+}
