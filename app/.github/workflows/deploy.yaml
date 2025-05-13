@@ -14,9 +14,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set Docker to use Minikube's Docker daemon
-      run: |
+      run: | 
         echo "Configuring Docker to use Minikube's Docker daemon..."
-        & minikube -p minikube docker-env --shell=powershell | Invoke-Expression
+        powershell -ExecutionPolicy Bypass -Command "& minikube -p minikube docker-env --shell=powershell | Invoke-Expression"
 
     - name: Build Backend Docker image
       run: docker build -t azghanahmad/e-ticket-backend:latest ./app/backend
