@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Add Admin Form Styles */
+.add-admin {
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.admin-form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #565a5e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Full width for the submit button */
+}
+
+.submit-button:hover {
+    background-color: #00bcd4;
+    transform: scale(1.05);
+}
+
+/* Media Queries for Responsiveness */
+
+/* For Tablets (Max Width 1024px) */
+@media screen and (max-width: 1024px) {
+    .add-admin {
+        padding: 30px; /* Slightly reduce padding for tablets */
+        max-width: 85%; /* More flexibility on smaller screens */
+    }
+
+    .form-title {
+        font-size: 1.6rem; /* Adjust font size for tablet screens */
+    }
+
+    .admin-form input {
+        font-size: 0.95rem; /* Adjust input font size */
+    }
+
+    .submit-button {
+        padding: 12px 25px; /* Adjust padding for better interaction */
+    }
+}
+
+/* For Mobile (Max Width 768px) */
+@media screen and (max-width: 768px) {
+    .add-admin {
+        padding: 30px; /* Further reduce padding */
+        max-width: 90%; /* Use 90% of screen width for better spacing */
+    }
+
+    .form-title {
+        font-size: 1.4rem; /* Smaller title font size for mobile screens */
+    }
+
+    .admin-form input {
+        font-size: 0.9rem; /* Adjust input size for mobile */
+        padding: 8px; /* Reduce padding for mobile */
+    }
+
+    .submit-button {
+        padding: 12px 20px; /* Adjust button padding for better fit */
+    }
+}
+
+/* For Very Small Mobile Screens (Max Width 480px) */
+@media screen and (max-width: 480px) {
+    .add-admin {
+        padding: 30px; /* Further reduce padding for very small screens */
+        max-width: 95%; /* Use nearly the full width of small screens */
+    }
+
+    .form-title {
+        font-size: 1.2rem; /* Further reduce font size */
+    }
+
+    .admin-form input {
+        font-size: 0.85rem; /* Adjust input size for very small screens */
+        padding: 7px; /* Further reduce padding */
+    }
+
+    .submit-button {
+        padding: 10px 18px; /* Make button padding smaller for very small screens */
+    }
+}
+
+/* General Dashboard Styles */
+.dashboard-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d0cfcf;
+    margin-top: 100px;
+}
+
+.home-container {
+    height: auto; /* Ensures full viewport height */
+    width: 95vw; /* Ensures full viewport width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+/* Header Styles */
+.home-header {
+    background: url("../../../assets/images/bus.jpg") no-repeat center center/cover;
+    position: fixed; /* Ensures the image stays in place */
+    top: 0;
+    left: 0;
+    height: 100%; /* Covers the entire height */
+    width: 100%; /* Covers the entire width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    z-index: -1; /* Places the image behind other elements */
+}

@@ -1,0 +1,41 @@
+name: Build and Deploy to Minikube
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set Docker to use Minikube's Docker daemon
+      run: |
+        echo "Configuring Docker to use Minikube's Docker daemon..."
+        & minikube -p minikube docker-env --shell=powershell | Invoke-Expression
+
+    - name: Build Backend Docker image
+      run: docker build -t azghanahmad/e-ticket-backend:latest
+
+    - name: Build Backend Docker image
+      run: docker build -t azghanahmad/e-ticket-frontend:latest
+    
+    - name: Login to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Push Backend Image to Docker Hub
+      run: docker push azghanahmad/e-ticket-frontend:latest
+
+    - name: Push Frontend Image to Docker Hub
+      run: docker push azghanahmad/e-ticket-backend:latest
+
+    - name: Deploy to Minikube
+      run: |
+        kubectl apply -f kubernetes/deployment-backend.yaml --namespace=scd-project
+        kubectl apply -f kubernetes/deployment-frontend.yaml --namespace=scd-project
+        kubectl apply -f kubernetes/service-backend.yaml --namespace=scd-project
+        kubectl apply -f kubernetes/service-frontend.yaml --namespace=scd-project

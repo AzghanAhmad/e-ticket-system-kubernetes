@@ -1,0 +1,125 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Edit Driver Form Styles */
+.edit-driver {
+    padding: 40px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.driver-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.driver-form input,
+.driver-form select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.driver-form input:focus,
+.driver-form select:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #565a5e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #00bcd4;
+    transform: scale(1.05);
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 1024px) {
+    .edit-driver {
+        padding: 30px;
+        max-width: 85%;
+    }
+
+    .form-title {
+        font-size: 1.6rem;
+    }
+
+    .driver-form input,
+    .driver-form select {
+        font-size: 0.95rem;
+    }
+
+    .submit-button {
+        padding: 12px 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .edit-driver {
+        padding: 30px;
+        max-width: 90%;
+    }
+
+    .form-title {
+        font-size: 1.4rem;
+    }
+
+    .driver-form input,
+    .driver-form select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .submit-button {
+        padding: 10px 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .edit-driver {
+        padding: 30px;
+        max-width: 95%;
+    }
+
+    .form-title {
+        font-size: 1.2rem;
+    }
+
+    .driver-form input,
+    .driver-form select {
+        font-size: 0.85rem;
+        padding: 7px;
+    }
+
+    .submit-button {
+        padding: 10px 18px;
+    }
+}

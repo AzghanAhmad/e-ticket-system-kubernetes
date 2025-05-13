@@ -1,0 +1,150 @@
+/* Bus List Styles */
+.bus-list {
+    padding: 20px;
+    background-color: #c0c0c0;
+    min-height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px auto 30px;
+    max-width: 90%;
+    box-sizing: border-box;
+}
+
+.list-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.add-bus-button {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    background-color: #565a5e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 200px;
+}
+
+.add-bus-button:hover {
+    background-color: #00bcd4;
+    transform: scale(1.05);
+}
+
+.bus-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.bus-table th,
+.bus-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.bus-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.edit-button,
+.delete-button {
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+    .list-title {
+        font-size: 1.5rem;
+    }
+
+    
+
+    .add-schedule-button {
+        padding: 8px 12px;
+        width: 100%;
+    }
+
+    .edit-button, .delete-button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .bus-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; /* Enables horizontal scrolling */
+    }
+
+    .bus-table th,
+    .bus-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .schedule-list {
+        padding: 20px;
+    }
+
+    .add-schedule-button {
+        padding: 6px 12px;
+    }
+
+    .list-title {
+        font-size: 1.2rem;
+    }
+
+    .bus-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; /* Enables horizontal scrolling */
+    }
+
+    .bus-table th,
+    .bus-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .edit-button, .delete-button {
+        padding: 5px;
+    }
+}
