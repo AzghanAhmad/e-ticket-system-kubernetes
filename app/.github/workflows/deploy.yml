@@ -44,21 +44,25 @@ jobs:
     - name: Set up Docker to use Minikube's environment
       shell: powershell
       run: |
-          Write-Output "Configuring Docker to use Minikube's environment..."
-          
-          $dockerEnvOutput = & minikube -p minikube docker-env --shell=powershell
+        Write-Output "Configuring Docker to use Minikube's Docker daemon (safe mode)..."
 
-          if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($dockerEnvOutput) -or $dockerEnvOutput -match '^false$') {
-            Write-Error "Failed to get valid Docker env from Minikube. Output: $dockerEnvOutput"
-            exit 1
+        $envOutput = & minikube -p minikube docker-env --shell powershell
+        if ($LASTEXITCODE -ne 0) {
+          Write-Error "Failed to get Minikube Docker environment"
+          exit 1
+        }
+
+        $envLines = $envOutput -split "`n"
+        foreach ($line in $envLines) {
+          if ($line -match '^\$Env:([^ ]+) = "([^"]+)"$') {
+            $name = $matches[1]
+            $value = $matches[2]
+            Write-Output "Setting environment variable: $name"
+            [System.Environment]::SetEnvironmentVariable($name, $value, "Process")
           }
+        }
 
-          Write-Output "Docker environment output received:"
-          Write-Output $dockerEnvOutput
-
-          Invoke-Expression $dockerEnvOutput
-
-
+        Write-Output "Docker environment set up successfully"
 
 
     - name: Log in to Docker Hub
