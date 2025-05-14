@@ -13,68 +13,59 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set Docker to use Minikube's Docker daemon
-      shell: pwsh
-      run: |
-        echo "Configuring Docker to use Minikube's Docker daemon..."
-        $envVars = & minikube -p minikube docker-env --shell powershell
-        if ($LASTEXITCODE -eq 0) {
-          Write-Output "Minikube environment variables:"
-          Write-Output $envVars
-          Invoke-Expression $envVars
-        } else {
-          Write-Error "Failed to configure Docker to use Minikube's Docker daemon."
-        }
-
     - name: Start Minikube
       shell: powershell
       run: |
-          Write-Output "Starting Minikube..."
-          minikube start --driver=docker
-          if ($LASTEXITCODE -ne 0) {
-            Write-Error "Failed to start Minikube"
-            exit 1
-          }
-          Write-Output "Minikube started successfully"
+        Write-Output "Starting Minikube..."
+        minikube start --driver=docker
+        if ($LASTEXITCODE -ne 0) {
+          Write-Error "Failed to start Minikube"
+          exit 1
+        }
 
-    - name: Verify Minikube and Docker
+    - name: Wait for Minikube to be ready
       shell: powershell
       run: |
-          Write-Output "Checking Minikube and Docker installation..."
-          minikube version
-          docker --version
-          docker info --format '{{.ServerVersion}}'
-          Write-Output "Checking Minikube status..."
+        $retries = 10
+        for ($i = 0; $i -lt $retries; $i++) {
           $status = minikube status -p minikube
-          if ($LASTEXITCODE -ne 0) {
-            Write-Error "Minikube is not running or accessible"
+          if ($status -match "host: Running") {
+            Write-Output "Minikube is ready"
+            break
+          }
+          Write-Output "Waiting for Minikube... ($i/$retries)"
+          Start-Sleep -Seconds 10
+          if ($i -eq $retries - 1) {
+            Write-Error "Minikube did not become ready in time"
             exit 1
           }
-          Write-Output "Minikube is running"
+        }
 
     - name: Set up Docker to use Minikube's environment
       shell: powershell
       run: |
-          Write-Output "Configuring Docker to use Minikube's environment..."
-          & minikube -p minikube docker-env --shell powershell | Invoke-Expression
-          if ($LASTEXITCODE -ne 0) {
-            Write-Error "Failed to set up Minikube Docker environment"
-            exit 1
-          }
-          Write-Output "Docker environment set up successfully"
+        Write-Output "Configuring Docker to use Minikube's environment..."
+        $dockerEnv = & minikube -p minikube docker-env --shell powershell
+        if (-not $dockerEnv -or $dockerEnv -match "false") {
+          Write-Error "Failed to set up Docker env. Output: $dockerEnv"
+          exit 1
+        }
+        Invoke-Expression $dockerEnv
+        Write-Output "Docker environment set up successfully"
+
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Backend Docker image
       run: docker build -t azghanahmad/e-ticket-backend:latest ./app/backend
 
     - name: Build Frontend Docker image
       run: docker build -t azghanahmad/e-ticket-frontend:latest ./app/frontend
-    
+
     - name: Push Backend Image to Docker Hub
       run: docker push azghanahmad/e-ticket-backend:latest
 
