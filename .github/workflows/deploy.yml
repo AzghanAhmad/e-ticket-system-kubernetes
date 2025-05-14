@@ -17,8 +17,7 @@ jobs:
       shell: powershell
       run: |
         Write-Output "Starting Minikube..."
-        minikube start
-        
+        minikube start --driver=hyperv --hyperv-virtual-switch="MiniKubeSwitch"
         if ($LASTEXITCODE -ne 0) {
           Write-Error "Failed to start Minikube"
           exit 1
