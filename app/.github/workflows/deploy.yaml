@@ -41,17 +41,20 @@ jobs:
           }
         }
 
-    - name: Set up Docker to use Minikube's environment
+    - name: Set up Docker to use Minikube's Docker daemon
       shell: powershell
       run: |
-        Write-Output "Configuring Docker to use Minikube's environment..."
-        $dockerEnv = & minikube -p minikube docker-env --shell powershell
-        if (-not $dockerEnv -or $dockerEnv -match "false") {
-          Write-Error "Failed to set up Docker env. Output: $dockerEnv"
+        Write-Output "Configuring Docker to use Minikube's Docker daemon..."
+        
+        $dockerEnvOutput = & minikube -p minikube docker-env --shell powershell
+        if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($dockerEnvOutput) -or $dockerEnvOutput -match '^false$') {
+          Write-Error "minikube docker-env failed. Output was: $dockerEnvOutput"
           exit 1
         }
-        Invoke-Expression $dockerEnv
-        Write-Output "Docker environment set up successfully"
+
+        Write-Output "Applying Docker environment variables..."
+        Invoke-Expression $dockerEnvOutput
+
 
 
     - name: Log in to Docker Hub
