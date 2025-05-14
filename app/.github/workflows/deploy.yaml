@@ -13,6 +13,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set Docker to use Minikube's Docker daemon
+      shell: pwsh
+      run: |
+        echo "Configuring Docker to use Minikube's Docker daemon..."
+        $envVars = & minikube -p minikube docker-env --shell powershell
+        if ($LASTEXITCODE -eq 0) {
+          Write-Output "Minikube environment variables:"
+          Write-Output $envVars
+          Invoke-Expression $envVars
+        } else {
+          Write-Error "Failed to configure Docker to use Minikube's Docker daemon."
+        }
+
     - name: Start Minikube
       shell: powershell
       run: |
