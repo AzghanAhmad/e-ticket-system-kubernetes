@@ -17,7 +17,7 @@ jobs:
       shell: powershell
       run: |
         Write-Output "Starting Minikube..."
-        minikube start --driver=virtualbox
+        minikube start --driver=docker
         if ($LASTEXITCODE -ne 0) {
           Write-Error "Failed to start Minikube"
           exit 1
