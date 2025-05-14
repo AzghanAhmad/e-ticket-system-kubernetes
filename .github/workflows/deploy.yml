@@ -18,6 +18,7 @@ jobs:
       run: |
         Write-Output "Starting Minikube..."
         minikube start
+        
         if ($LASTEXITCODE -ne 0) {
           Write-Error "Failed to start Minikube"
           exit 1
