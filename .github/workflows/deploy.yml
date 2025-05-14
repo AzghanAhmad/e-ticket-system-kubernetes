@@ -16,7 +16,10 @@ jobs:
     - name: Start Minikube
       shell: powershell
       run: |
-        Write-Output "Starting Minikube..."
+        Write-Output "Deleting old Minikube cluster..."
+        minikube delete
+
+        Write-Output "Starting Minikube with Hyper-V driver..."
         minikube start --driver=hyperv --hyperv-virtual-switch="MiniKubeSwitch"
         if ($LASTEXITCODE -ne 0) {
           Write-Error "Failed to start Minikube"
