@@ -20,7 +20,7 @@ jobs:
         minikube delete
 
         Write-Output "Starting Minikube with Hyper-V driver..."
-        minikube start --driver=hyperv --hyperv-virtual-switch="MiniKubeSwitch"
+        minikube start
         if ($LASTEXITCODE -ne 0) {
           Write-Error "Failed to start Minikube"
           exit 1
